@@ -33,7 +33,7 @@
         function(value) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
-          //tg.sendData(JSON.stringify(data));
+          tg.sendData(JSON.stringify(value));
         },
         function(error) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
