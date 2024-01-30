@@ -10,7 +10,7 @@
   <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
 
   <p>
-    <button id='buy' onclick="generate();">Generate InChI and 1send InChIKey</button>
+    <button id='buy' onclick="generate();">Generate InChI and 22send InChIKey</button>
   </p>
   <p>Output:</p>
   <pre id=output style="background-color: #ddd;"></pre>
@@ -33,7 +33,7 @@
         function(value) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
-          tg.sendData(JSON.stringify(value));
+          tg.sendData(value);
         },
         function(error) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
