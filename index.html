@@ -28,7 +28,7 @@
     }
 
     function generateInChI() {
-      let promise = ketcher.getInchi();
+      var promise = ketcher.getInchi();
       promise.then(
         function(value) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
@@ -40,7 +40,7 @@
     }
 
     function generateInChIKey() {
-      let promise = ketcher.generateInchIKey();
+      var promise = ketcher.generateInchIKey();
       promise.then(
         function(value) {
           display.innerHTML = display.innerHTML + "\nInChIKey:\n" + value + "\n";
