@@ -10,7 +10,7 @@
   <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
 
   <p>
-    <button id='buy' onclick="generate();">Generate InChI and send21 InChIKey</button>
+    <button id='buy' onclick="generate();">Generate InChI and send InChIKey</button>
   </p>
   <p>Output:</p>
   <pre id=output style="background-color: #ddd;"></pre>
@@ -32,6 +32,8 @@
       promise.then(
         function(value) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
+          display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
+          //tg.sendData(JSON.stringify(data));
         },
         function(error) {
           display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
@@ -50,7 +52,7 @@
         }
       );
     }
-    display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
+    
     var tg = window.Telegram.WebApp;
     var urchase = document.getElementById('buy');
     var meow1 = 'try';
