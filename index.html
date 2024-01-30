@@ -1,51 +1,72 @@
 <html>
 <!-- generate-molecule-InChI-InChIKey.html Copyright (c) FYIcenter.com. -->
+
 <head>
-<title>Generate Molecule InChI and InChIKey</title>
+  <title>Generate Molecule InChI and InChIKey</title>
 </head>
+
 <body>
-<p>Create a molecule structure, then click generate button below the editor:</p>
-<iframe id=frmKetcher src="/ketcher/index.html"
-  style="width: 680px; height: 400px;"></iframe>
+  <p>Create a molecule structure, then click generate button below the editor:</p>
+  <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
 
-<p><button onclick="generate();">Generate InChI and InChIKey</button></p>
-<p>Output:</p>
-<pre id=output style="background-color: #ddd;"></pre>
-<script>
-  var ketcher = null;
-  var display = document.getElementById("output");
+  <p>
+    <button id='buy' onclick="generate();">Generate InChI and InChIKey</button>
+  </p>
+  <p>Output:</p>
+  <pre id=output style="background-color: #ddd;"></pre>
+  <script>
+    var ketcher = null;
+    var display = document.getElementById("output");
 
-function generate() {
-  frm = document.getElementById("frmKetcher");
-  ketcher = frm.contentWindow.ketcher;
-  display.innerHTML = "";
-  generateInChI();
-  generateInChIKey();
-}
-
-function generateInChI() {
-  let promise = ketcher.getInchi();
-  promise.then(
-    function(value) {
-      display.innerHTML = display.innerHTML+"\nInChI:\n"+value+"\n";
-    },
-    function(error) {
-      display.innerHTML = display.innerHTML+"\nInChI:\n"+error.toString()+"\n";
+    function generate() {
+      frm = document.getElementById("frmKetcher");
+      ketcher = frm.contentWindow.ketcher;
+      display.innerHTML = "";
+      generateInChI();
+      generateInChIKey();
     }
-  );
-}
 
-function generateInChIKey() {
-  let promise = ketcher.generateInchIKey();
-  promise.then(
-    function(value) {
-      display.innerHTML = display.innerHTML+"\nInChIKey:\n"+value+"\n";
-    },
-    function(error) {
-      display.innerHTML = display.innerHTML+"\nInChIKey:\n"+error.toString()+"\n";
+    function generateInChI() {
+      let promise = ketcher.getInchi();
+      promise.then(
+        function(value) {
+          display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
+        },
+        function(error) {
+          display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
+        }
+      );
     }
-  );
-}
-</script>
+
+    function generateInChIKey() {
+      let promise = ketcher.generateInchIKey();
+      promise.then(
+        function(value) {
+          display.innerHTML = display.innerHTML + "\nInChIKey:\n" + value + "\n";
+        },
+        function(error) {
+          display.innerHTML = display.innerHTML + "\nInChIKey:\n" + error.toString() + "\n";
+        }
+      );
+    }
+  </script>
+  <div id="root"></div>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    let tg = window.Telegram.WebApp;
+    let urchase = document.getElementById('buy');
+    let meow1 = 'try';
+    tg.expand();
+    urchase.addEventListener('click', () => {
+      let data = {
+        promise: promise,
+        urchase: urchase,
+        meow1: meow1
+      }
+      tg.sendData(JSON.stringify(data));
+      tg.close();
+    });
+  </script>
 </body>
+
 </html>
