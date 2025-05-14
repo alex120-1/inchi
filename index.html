@@ -6,8 +6,9 @@
 </head>
 
 <body>
+  <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
   <p>
-    <button id='buy' onclick="generate();">Отправить ответ</button>
+    <button id='buy' onclick="generate();">Отправить решение</button>
   </p>
   <pre id=output style="background-color: #ddd;"></pre>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -56,9 +57,11 @@
     urchase.addEventListener('click', () => {
       var data = {
         promise: promise,
+        //urchase: urchase,
         meow1: meow1
       }
-
+    //tg.sendData(JSON.stringify(data));
+    //tg.close();
     });
   </script>
 </body>
