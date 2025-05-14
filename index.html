@@ -6,65 +6,22 @@
 </head>
 
 <body>
-  <p>Create a molecule structure, then click generate button below the editor:</p>
-  <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
-
   <p>
-    <button id='buy' onclick="generate();">Generate InChI and 22send InChIKey</button>
+    <button id='buy' onclick="generate();">Send answer</button>
   </p>
-  <p>Output:</p>
   <pre id=output style="background-color: #ddd;"></pre>
   <script src="https://telegram.org/js/telegram-web-app.js" draggable="false"></script>
   <script>
     var ketcher = null;
-    var display = document.getElementById("output");
-
-    function generate() {
-      frm = document.getElementById("frmKetcher");
-      ketcher = frm.contentWindow.ketcher;
-      display.innerHTML = "";
-      generateInChI();
-      generateInChIKey();
-    }
-
     function generateInChI() {
       var promise = ketcher.getInchi();
       promise.then(
         function(value) {
-          display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
-          display.innerHTML = display.innerHTML + "\nInChI:\n" + value + "\n";
           tg.sendData(value);
         },
-        function(error) {
-          display.innerHTML = display.innerHTML + "\nInChI:\n" + error.toString() + "\n";
-        }
       );
     }
 
-    function generateInChIKey() {
-      var promise = ketcher.generateInchIKey();
-      promise.then(
-        function(value) {
-          display.innerHTML = display.innerHTML + "\nInChIKey:\n" + value + "\n";
-        },
-        function(error) {
-          display.innerHTML = display.innerHTML + "\nInChIKey:\n" + error.toString() + "\n";
-        }
-      );
-    }
-    
-    var tg = window.Telegram.WebApp;
-    var urchase = document.getElementById('buy');
-    var meow1 = 'try';
-    tg.expand();
-    urchase.addEventListener('click', () => {
-      var data = {
-        promise: promise,
-        //urchase: urchase,
-        meow1: meow1
-      }
-    //tg.sendData(JSON.stringify(data));
-    //tg.close();
     });
   </script>
 </body>
