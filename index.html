@@ -6,13 +6,9 @@
 </head>
 
 <body>
-  <p>Create a molecule structure, then click generate button below the editor:</p>
-  <iframe id=frmKetcher src="/ketcher/index.html" style="width: 680px; height: 400px;"></iframe>
-
   <p>
-    <button id='buy' onclick="generate();">Generate InChI and 22send InChIKey</button>
+    <button id='buy' onclick="generate();">Отправить ответ</button>
   </p>
-  <p>Output:</p>
   <pre id=output style="background-color: #ddd;"></pre>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   <script>
@@ -60,11 +56,9 @@
     urchase.addEventListener('click', () => {
       var data = {
         promise: promise,
-        //urchase: urchase,
         meow1: meow1
       }
-    //tg.sendData(JSON.stringify(data));
-    //tg.close();
+
     });
   </script>
 </body>
